@@ -1,5 +1,7 @@
-package com.example.myapplication
+package com.example.myapplication.feature
 
+import com.example.myapplication.base.view.BaseActivity
+import com.example.myapplication.di.storage.SubSharedPreferencesStorage
 import dagger.Subcomponent
 
 @Subcomponent

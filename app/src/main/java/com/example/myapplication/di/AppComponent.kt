@@ -1,14 +1,17 @@
 package com.example.myapplication.di
 
 import android.content.Context
-import com.example.myapplication.MainActivity
-import com.example.myapplication.MainComponent
+import com.example.myapplication.base.view.BaseActivity
+import com.example.myapplication.feature.MainActivity
+import com.example.myapplication.feature.MainComponent
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [StorageModule::class, AppSubComponent::class])
+@Component(modules = [
+    AppSubComponent::class
+])
 interface AppComponent {
 
     @Component.Factory

@@ -1,15 +1,19 @@
-package com.example.myapplication
+package com.example.myapplication.feature
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.example.myapplication.MyApplication
+import com.example.myapplication.R
+import com.example.myapplication.base.view.BaseActivity
+import com.example.myapplication.di.storage.SubSharedPreferencesStorage
 
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     @Inject
     lateinit var mainViewModel: MainViewModel
@@ -17,9 +21,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        appComponent.mainComponent().create().inject(this)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        (application as MyApplication).appComponent.inject(this)
         fab.setOnClickListener { view ->
             mainViewModel.getting()
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
