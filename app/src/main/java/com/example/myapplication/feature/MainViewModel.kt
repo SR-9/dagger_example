@@ -8,10 +8,12 @@ import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
     private val storage: SharedPreferencesStorage,
-    private val api: RestfulApi
+    private val api: RestfulApi,
+    private val subModule: SubSharedPreferencesStorage
 ) : BaseViewModel() {
 
     fun getting() {
+        subModule.greeting()
         storage.greeting()
         api.greeting()
         println("hello ")

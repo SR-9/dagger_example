@@ -4,7 +4,7 @@ import com.example.myapplication.base.view.BaseActivity
 import com.example.myapplication.di.storage.SubSharedPreferencesStorage
 import dagger.Subcomponent
 
-@Subcomponent
+@Subcomponent(modules = [SubSharedPreferencesStorage::class])
 interface  MainComponent {
     // Factory to create instances of LoginComponent
     @Subcomponent.Factory
