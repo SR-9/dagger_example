@@ -2,13 +2,10 @@ package com.example.myapplication.feature
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import com.example.myapplication.base.view.BaseActivity
-import com.example.myapplication.di.storage.SubSharedPreferencesStorage
 
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject

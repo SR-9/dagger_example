@@ -1,9 +1,8 @@
 package com.example.myapplication.di
 
 import android.content.Context
-import com.example.myapplication.base.view.BaseActivity
 import com.example.myapplication.feature.MainActivity
-import com.example.myapplication.feature.MainComponent
+import com.example.myapplication.di.submodule.MainComponent
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

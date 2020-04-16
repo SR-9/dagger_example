@@ -1,7 +1,6 @@
 package com.example.myapplication.di
 
-import com.example.myapplication.di.network.RestfulApi
-import com.example.myapplication.di.storage.SharedPreferencesStorage
+import com.example.myapplication.di.module.network.RestfulApi
 import dagger.Module
 
 @Module  interface RestfulModule {

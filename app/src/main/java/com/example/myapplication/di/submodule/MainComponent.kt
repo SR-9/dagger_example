@@ -1,7 +1,7 @@
-package com.example.myapplication.feature
+package com.example.myapplication.di.submodule
 
-import com.example.myapplication.base.view.BaseActivity
-import com.example.myapplication.di.storage.SubSharedPreferencesStorage
+import com.example.myapplication.di.module.storage.SubSharedPreferencesStorage
+import com.example.myapplication.feature.MainActivity
 import dagger.Subcomponent
 
 @Subcomponent(modules = [SubSharedPreferencesStorage::class])

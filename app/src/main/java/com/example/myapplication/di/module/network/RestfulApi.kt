@@ -1,4 +1,4 @@
-package com.example.myapplication.di.network
+package com.example.myapplication.di.module.network
 
 import android.content.Context
 import javax.inject.Inject
