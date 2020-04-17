@@ -1,4 +1,4 @@
-package com.example.myapplication.feature
+package com.example.myapplication.feature.main
 
 import com.example.myapplication.base.view.BaseViewModel
 import com.example.myapplication.di.module.network.ApiService
@@ -17,9 +17,12 @@ class MainViewModel @Inject constructor(
     fun getting() {
         subModule.greeting()
         storage.greeting()
-        with(api.searchGoogle("go")) {
+        with(api.getEmployees()) {
             subscribeOn(Schedulers.computation())
-                .subscribeBy {  }
+                .subscribeBy(
+                    onSuccess = { println(it) },
+                    onError = { it.printStackTrace() }
+                )
         }
 
         println("hello ")

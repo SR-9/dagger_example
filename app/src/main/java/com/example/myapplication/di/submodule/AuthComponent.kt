@@ -5,11 +5,11 @@ import com.example.myapplication.feature.main.MainActivity
 import dagger.Subcomponent
 
 @Subcomponent(modules = [SubSharedPreferencesStorage::class])
-interface  MainComponent {
+interface  AuthComponent {
     // Factory to create instances of LoginComponent
     @Subcomponent.Factory
     interface Factory {
-        fun create(): MainComponent
+        fun create(): AuthComponent
     }
 
     // Classes that can be injected by this Component

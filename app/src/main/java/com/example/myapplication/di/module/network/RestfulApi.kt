@@ -55,7 +55,7 @@ import javax.inject.Singleton
 
     @Provides fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://www.google.com/")
+            .baseUrl("https://postman-echo.com/")
             .callbackExecutor(Executors.newSingleThreadExecutor())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())

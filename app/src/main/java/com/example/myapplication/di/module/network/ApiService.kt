@@ -5,6 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("search")
-    fun searchGoogle(@Query("q") search: String): Single<String>
+    @GET("get?foo1=bar1&foo2=bar2")
+    fun getEmployees(): Single<Any>
 }

@@ -1,4 +1,4 @@
-package com.example.myapplication.feature
+package com.example.myapplication.feature.main
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
