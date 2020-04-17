@@ -14,13 +14,24 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+
+    ext.loadProperties = { filename ->
+        def keystorePropertiesFile = rootProject.file(filename)
+        def keystoreProperties = new Properties()
+        if (keystorePropertiesFile != null && keystorePropertiesFile.exists()) {
+            keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+            return keystoreProperties
+        }
+        throw new GradleException("Not found $filename file")
+    }
 }
 
 allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven { url 'https://jitpack.io' }
+        mavenCentral()
     }
 }
 
