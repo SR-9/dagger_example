@@ -5,6 +5,7 @@ import android.app.Application
 import android.os.Bundle
 import com.example.myapplication.di.AppComponent
 import com.example.myapplication.di.DaggerAppComponent
+import com.example.myapplication.di.data.AppData
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -21,6 +22,7 @@ class MyApplication : Application(),
         super.onCreate()
         registerActivityLifecycleCallbacks(this)
         DaggerAppComponent.builder()
+            .appData(AppData())
             .build()
             .inject(this@MyApplication)
     }

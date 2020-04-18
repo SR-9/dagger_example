@@ -37,7 +37,7 @@ class LoginActivity : BaseActivity() {
                 )
         }
         btnNext.setOnClickListener {
-            (applicationContext as MyApplication).appComponent.appData().a += 1
+            viewModel.data.a += 1
             tv123.text = viewModel.data.a.toString()
         }
         btnStartActivity.setOnClickListener {
