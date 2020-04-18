@@ -3,8 +3,8 @@ package com.example.myapplication
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import com.example.myapplication.di.AppComponent
 import com.example.myapplication.di.DaggerAppComponent
-import com.example.myapplication.di.data.AppData
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -17,15 +17,17 @@ class MyApplication : Application(),
 
     @Inject
     lateinit var activityInjector: DispatchingAndroidInjector<Activity>
-
+    lateinit var appComponent: AppComponent
     override fun onCreate() {
         super.onCreate()
         registerActivityLifecycleCallbacks(this)
-        DaggerAppComponent.builder()
-            .application(this)
-            .appData(AppData())
-            .build()
-            .inject(this)
+         appComponent = DaggerAppComponent.builder()
+            .build().apply {
+                 inject(this@MyApplication)
+             }
+
+
+        println("abc : ${appComponent.appData().a}")
     }
 
 

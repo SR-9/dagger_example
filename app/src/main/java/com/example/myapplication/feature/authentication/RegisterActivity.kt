@@ -1,6 +1,7 @@
 package com.example.myapplication.feature.authentication
 
 import android.os.Bundle
+import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import com.example.myapplication.base.view.BaseActivity
 import kotlinx.android.synthetic.main.register_activity.*
@@ -15,6 +16,6 @@ class RegisterActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_activity)
 
-        tvInfo.text = viewModel.data.add.toString()
+        tvInfo.text = viewModel.data.appData().a.toString()
     }
 }

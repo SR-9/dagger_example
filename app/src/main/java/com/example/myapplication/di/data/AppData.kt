@@ -4,10 +4,6 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Inject
 
-data class TestData(
-    var name: String
-)
-
 class AppData  {
     var a = 0
 }

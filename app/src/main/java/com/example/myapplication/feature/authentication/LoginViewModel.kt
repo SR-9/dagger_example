@@ -6,7 +6,6 @@ import com.example.myapplication.di.module.storage.SharedPreferencesStorage
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
-    val data: SharedPreferencesStorage,
     val api: ApiService
 ) : BaseViewModel () {
 

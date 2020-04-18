@@ -2,6 +2,7 @@ package com.example.myapplication.di.module.network
 
 import android.content.Context
 import com.example.myapplication.BuildConfig
+import com.example.myapplication.di.data.AppData
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -59,7 +60,8 @@ import javax.inject.Singleton
 
     @Singleton
     @Provides
-    fun provideRetrofitService(context: Context): ApiService {
+    fun provideRetrofitService(context: Context, appData: AppData): ApiService {
+        println(" app data 1 : ${appData.a}")
         return provideRetrofit().create(ApiService::class.java)
     }
 }

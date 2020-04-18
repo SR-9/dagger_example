@@ -1,6 +1,7 @@
 package com.example.myapplication.feature.authentication
 
 import android.os.Bundle
+import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import com.example.myapplication.base.extension.launchActivity
 import com.example.myapplication.base.view.BaseActivity
@@ -27,7 +28,7 @@ class LoginActivity : BaseActivity() {
 
 //        appComponent.authComponent().create().inject(this)
 
-        tv123.text = viewModel.data.add.toString()
+        tv123.text = (applicationContext as MyApplication).appComponent.appData().a.toString()
         with(viewModel.api.getEmployees()) {
             subscribeOn(Schedulers.computation())
                 .subscribeBy(
@@ -36,8 +37,8 @@ class LoginActivity : BaseActivity() {
                 )
         }
         btnNext.setOnClickListener {
-            viewModel.data.add = Random.nextInt()
-            tv123.text = viewModel.data.add.toString()
+            (applicationContext as MyApplication).appComponent.appData().a += 1
+            tv123.text = (applicationContext as MyApplication).appComponent.appData().a.toString()
         }
         btnStartActivity.setOnClickListener {
             launchActivity<RegisterActivity> { }
