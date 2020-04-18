@@ -10,6 +10,7 @@ data class TestData(
 
 @Module
 class AppData @Inject constructor() {
+
     @Provides
     fun data() : TestData {
         return TestData("ewrwerwe")

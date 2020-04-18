@@ -7,8 +7,8 @@ import com.example.myapplication.di.AppComponent
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    val appComponent: AppComponent get() {
-        return (application as MyApplication).appComponent
-    }
+//    val appComponent: AppComponent get() {
+//        return (application as MyApplication).appComponent
+//    }
 
 }

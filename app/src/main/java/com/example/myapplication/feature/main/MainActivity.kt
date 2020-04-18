@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        appComponent.mainComponent().create().inject(this)
+//        appComponent.mainComponent().create().inject(this)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         fab.setOnClickListener { view ->

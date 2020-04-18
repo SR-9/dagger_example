@@ -14,7 +14,7 @@ class RegisterActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_activity)
-        appComponent.authComponent().create().inject(this)
+//        appComponent.authComponent().create().inject(this)
         tvInfo.text = viewModel.pdata.name
     }
 }
