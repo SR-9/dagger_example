@@ -60,8 +60,7 @@ import javax.inject.Singleton
 
     @Singleton
     @Provides
-    fun provideRetrofitService(context: Context, appData: AppData): ApiService {
-        println(" app data 1 : ${appData.a}")
+    fun provideRetrofitService(): ApiService {
         return provideRetrofit().create(ApiService::class.java)
     }
 }
