@@ -1,12 +1,15 @@
 package com.example.myapplication.feature.authentication
 
+import com.example.myapplication.ExamplePreferences
 import com.example.myapplication.base.view.BaseViewModel
-import com.example.myapplication.di.module.network.ApiService
-import com.example.myapplication.di.module.storage.SharedPreferencesStorage
-import javax.inject.Inject
+import org.koin.dsl.module
 
-class LoginViewModel @Inject constructor(
-    val api: ApiService
+val loginViewModelModule = module {
+    factory { LoginViewModel(get()) }
+}
+
+class LoginViewModel  constructor(
+    val data: ExamplePreferences
 ) : BaseViewModel () {
 
 }

@@ -1,21 +1,22 @@
 package com.example.myapplication.feature.authentication
 
 import android.os.Bundle
+import com.example.myapplication.ExamplePreferences
+import com.example.myapplication.ExamplePreferences2
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import com.example.myapplication.base.view.BaseActivity
 import kotlinx.android.synthetic.main.register_activity.*
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 class RegisterActivity : BaseActivity() {
 
-    @Inject
-    lateinit var viewModel: RegisterViewModel
+    private val preferences: ExamplePreferences2 by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_activity)
 
-        tvInfo.text = viewModel.data.appData().a.toString()
+        preferences.greeting()
     }
 }

@@ -1,50 +1,54 @@
 package com.example.myapplication
 
-import android.app.Activity
 import android.app.Application
-import android.os.Bundle
-import com.example.myapplication.di.AppComponent
-import com.example.myapplication.di.DaggerAppComponent
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import javax.inject.Inject
+import android.content.Context
+import com.example.myapplication.feature.authentication.loginViewModelModule
+import com.example.myapplication.network.networkModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
 
-class MyApplication : Application(),
-    Application.ActivityLifecycleCallbacks,
-    HasAndroidInjector {
+class MyApplication : Application(){
 
-    @Inject
-    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
-    lateinit var appComponent: AppComponent
+
     override fun onCreate() {
         super.onCreate()
-        registerActivityLifecycleCallbacks(this)
-         appComponent = DaggerAppComponent.builder()
-            .build().apply {
-                 inject(this@MyApplication)
-             }
 
-
-        println("abc : ${appComponent.appData().a}")
+        startKoin {
+            androidLogger()
+            androidContext(this@MyApplication)
+            modules(listOf(
+                prefModule,
+                prefModule2,
+                networkModule,
+                loginViewModelModule
+            ))
+        }
     }
 
+}
 
-    @Suppress("UNCHECKED_CAST")
-    override fun androidInjector(): AndroidInjector<Any> {
-        return activityInjector as AndroidInjector<Any>
+val prefModule = module {
+    single { ExamplePreferences(androidContext()) }
+}
+
+val prefModule2 = module {
+    single { ExamplePreferences2(get()) }
+}
+
+class ExamplePreferences(context: Context) {
+
+    var a = 0
+    fun greeting() {
+        a += 1
+        println("ExamplePreferences $a")
     }
+}
 
-    // Inject Activity
-    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        AndroidInjection.inject(activity)
+class ExamplePreferences2(val pre1 : ExamplePreferences) {
+
+    fun greeting() {
+        pre1.greeting()
     }
-
-    override fun onActivityPaused(activity: Activity) = Unit
-    override fun onActivityStarted(activity: Activity) = Unit
-    override fun onActivityDestroyed(activity: Activity) = Unit
-    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) = Unit
-    override fun onActivityStopped(activity: Activity) = Unit
-    override fun onActivityResumed(activity: Activity) = Unit
 }

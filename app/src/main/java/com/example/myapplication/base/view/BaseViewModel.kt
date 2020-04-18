@@ -1,3 +1,5 @@
 package com.example.myapplication.base.view
 
-abstract class BaseViewModel ()
+import androidx.lifecycle.ViewModel
+
+abstract class BaseViewModel () : ViewModel()

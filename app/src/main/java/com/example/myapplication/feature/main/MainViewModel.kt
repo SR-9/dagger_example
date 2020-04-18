@@ -1,9 +1,8 @@
 package com.example.myapplication.feature.main
 
 import com.example.myapplication.base.view.BaseViewModel
-import javax.inject.Inject
 
-class MainViewModel @Inject constructor(
+class MainViewModel  constructor(
 
 ) : BaseViewModel() {
 
