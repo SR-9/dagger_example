@@ -1,9 +1,7 @@
 package com.example.myapplication.di.module.network
 
 import android.content.Context
-import android.content.SharedPreferences
 import com.example.myapplication.BuildConfig
-import com.example.myapplication.base.extension.sharedPreferences
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -18,11 +16,7 @@ import javax.inject.Singleton
 
 @Module class RestfulApi @Inject constructor()  {
 
-    @Provides fun sharedPreferences(context: Context): SharedPreferences {
-        return context.applicationContext.sharedPreferences
-    }
-
-    @Provides fun providesInterceptor(): Interceptor {
+    private fun providesInterceptor(): Interceptor {
         return Interceptor { chain ->
             val newRequest = chain.request().newBuilder()
                 .addHeader(
@@ -33,7 +27,7 @@ import javax.inject.Singleton
         }
     }
 
-    @Provides fun providesOkHttpClient(
+    private fun providesOkHttpClient(
         logging: Interceptor,
         header: Interceptor
     ): OkHttpClient {
@@ -44,7 +38,7 @@ import javax.inject.Singleton
     }
 
 
-    @Provides fun createLoggingInterceptor(): Interceptor {
+    private fun createLoggingInterceptor(): Interceptor {
         val logging = HttpLoggingInterceptor()
         logging.level = if (BuildConfig.DEBUG)
             HttpLoggingInterceptor.Level.BODY
@@ -53,7 +47,7 @@ import javax.inject.Singleton
         return logging
     }
 
-    @Provides fun provideRetrofit(): Retrofit {
+    private fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://postman-echo.com/")
             .callbackExecutor(Executors.newSingleThreadExecutor())
@@ -65,7 +59,7 @@ import javax.inject.Singleton
 
     @Singleton
     @Provides
-    fun provideRetrofitService(retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
+    fun provideRetrofitService(context: Context): ApiService {
+        return provideRetrofit().create(ApiService::class.java)
     }
 }
