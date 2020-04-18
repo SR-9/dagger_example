@@ -17,17 +17,12 @@ class MyApplication : Application(),
 
     @Inject
     lateinit var activityInjector: DispatchingAndroidInjector<Activity>
-    lateinit var appComponent: AppComponent
     override fun onCreate() {
         super.onCreate()
         registerActivityLifecycleCallbacks(this)
-         appComponent = DaggerAppComponent.builder()
-            .build().apply {
-                 inject(this@MyApplication)
-             }
-
-
-        println("abc : ${appComponent.appData().a}")
+        DaggerAppComponent.builder()
+            .build()
+            .inject(this@MyApplication)
     }
 
 

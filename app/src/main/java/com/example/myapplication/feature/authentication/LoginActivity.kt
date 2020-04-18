@@ -28,7 +28,7 @@ class LoginActivity : BaseActivity() {
 
 //        appComponent.authComponent().create().inject(this)
 
-        tv123.text = (applicationContext as MyApplication).appComponent.appData().a.toString()
+        tv123.text = viewModel.data.a.toString()
         with(viewModel.api.getEmployees()) {
             subscribeOn(Schedulers.computation())
                 .subscribeBy(
@@ -38,7 +38,7 @@ class LoginActivity : BaseActivity() {
         }
         btnNext.setOnClickListener {
             (applicationContext as MyApplication).appComponent.appData().a += 1
-            tv123.text = (applicationContext as MyApplication).appComponent.appData().a.toString()
+            tv123.text = viewModel.data.a.toString()
         }
         btnStartActivity.setOnClickListener {
             launchActivity<RegisterActivity> { }
