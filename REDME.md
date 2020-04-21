@@ -8,4 +8,4 @@ Koin Reference:
     # https://medium.com/@harmittaa/setting-up-koin-2-0-1-for-android-ebf11de01816
     # https://medium.com/@harmittaa/retrofit-2-6-0-with-koin-and-coroutines-testing-your-layers-42d2a71566f1
     # https://medium.com/@harmittaa/retrofit-2-6-0-with-koin-and-coroutines-network-error-handling-a5b98b5e5ca0
-    #
+    # https://android.jlelse.eu/koin-simple-android-di-a47827a707ce
