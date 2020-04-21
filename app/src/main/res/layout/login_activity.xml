@@ -9,7 +9,13 @@
 
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv123"
+        android:id="@+id/tvAppComponent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="123" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvSubComponent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="123" />

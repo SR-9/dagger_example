@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import android.view.Menu
 import android.view.MenuItem
+import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import com.example.myapplication.base.view.BaseActivity
 
@@ -18,7 +19,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        appComponent.mainComponent().create().inject(this)
+        (application as MyApplication).appComponent.mainComponent().build().inject(this)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         fab.setOnClickListener { view ->

@@ -6,9 +6,9 @@ import dagger.Subcomponent
 
 @Subcomponent(modules = [SubStorage::class])
 interface  MainComponent {
-    @Subcomponent.Factory
-    interface Factory {
-        fun create(): MainComponent
+    @Subcomponent.Builder
+    interface Builder {
+        fun build(): MainComponent
     }
     fun inject(activity: MainActivity)
 }

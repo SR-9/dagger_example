@@ -8,9 +8,16 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAppComponent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvInfo"
-        />
+        tools:text="123" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvSubComponent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="123" />
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
