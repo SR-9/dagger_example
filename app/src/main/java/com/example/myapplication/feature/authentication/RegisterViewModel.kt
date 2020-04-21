@@ -6,8 +6,8 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class RegisterViewModel @Inject constructor(
-    @Named("n1") val pdata: TestData,
-    @Named("n2") val value: TestData
+    @Named("n1") val testData: TestData,
+    @Named("n2") val testDataSub: TestData
 )  : BaseViewModel() {
 
 }

@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.Activity
 import android.app.Application
 import com.example.myapplication.di.AppComponent
 import com.example.myapplication.di.DaggerAppComponent
@@ -12,7 +13,6 @@ class MyApplication : Application() {
            .application(this)
            .appData(TestData(name = "app Component"))
            .build()
-
    }
 
     val authComponent: AuthComponent by  lazy {
@@ -21,4 +21,13 @@ class MyApplication : Application() {
             .build()
     }
 
+}
+
+inline val Activity.appComponent: AppComponent get() {
+    return (applicationContext as MyApplication).appComponent
+}
+
+
+inline val Activity.authComponent: AuthComponent get() {
+    return (applicationContext as MyApplication).authComponent
 }
