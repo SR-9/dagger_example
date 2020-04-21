@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 // @Inject tells Dagger how to provide instances of this type
 @Module
-class SubSharedPreferencesStorage @Inject constructor()  {
+class SubStorage @Inject constructor()  {
 
     var add = 0
 
