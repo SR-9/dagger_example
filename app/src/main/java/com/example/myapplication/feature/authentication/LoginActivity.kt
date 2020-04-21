@@ -21,6 +21,7 @@ class LoginActivity : BaseActivity() {
 
         authComponent.inject(this)
 
+        viewModel.storage.greeting()
         tvAppComponent.text = "app " +viewModel.testData.name
         tvSubComponent.text = "sub " + viewModel.testDataSub.name
         btnNext.setOnClickListener {
