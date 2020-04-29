@@ -42,7 +42,7 @@ class ExamplePreferences(context: Context) {
     var a = 0
     fun greeting() {
         a += 1
-        println("ExamplePreferences $a")
+        println("1ExamplePreferences $a")
     }
 }
 

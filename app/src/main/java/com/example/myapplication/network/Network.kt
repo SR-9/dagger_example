@@ -1,17 +1,21 @@
 package com.example.myapplication.network
 
+import io.reactivex.Single
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
+import okhttp3.ResponseBody
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
 
 val networkModule = module {
-    factory { AuthInterceptor() }
-    factory { provideOkHttpClient(get()) }
-    factory { provideForecastApi(get()) }
+    single { AuthInterceptor() }
+    single { provideOkHttpClient(get()) }
     single { provideRetrofit(get()) }
+    single { provideForecastApi(get()) }
 }
 
 class AuthInterceptor : Interceptor {
@@ -25,15 +29,22 @@ class AuthInterceptor : Interceptor {
 }
 
 fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-    return Retrofit.Builder().baseUrl("BuildConfig.API_URL").client(okHttpClient)
+    return Retrofit.Builder().baseUrl("https://google.com/").client(okHttpClient)
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create()).build()
 }
 
 fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
-    return OkHttpClient().newBuilder().addInterceptor(authInterceptor).build()
+    //return OkHttpClient().newBuilder().addInterceptor(authInterceptor).build()
+    return OkHttpClient.Builder().build()
 }
 
-fun provideForecastApi(retrofit: Retrofit): Any = retrofit.create(Any::class.java)
+fun provideForecastApi(retrofit: Retrofit): IApiService = retrofit.create(IApiService::class.java)
+
+interface IApiService {
+    @GET("/")
+    suspend fun testApi() : ResponseBody
+}
 
 
 
